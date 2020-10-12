@@ -32,7 +32,7 @@
 # --------------------------
 
 library(shiny)
-library(rdrop2)
+#library(rdrop2)
 #library(sendmailR)
 library(digest)
 library(yarrr)
@@ -176,15 +176,15 @@ GameData <- reactiveValues(game = c(),
       return(
         list(
           h2("Bandit game"),
-          p("Please enter your given username and password"),
+          p("Please enter your given username"),
           textInput(inputId = "workerid", 
                     label = "Please enter a username", 
                     value = "", 
                     placeholder = "e.g. George"),
-          textInput(inputId = "password", 
-                    label = "Please enter a password", 
-                    value = "", 
-                    placeholder = "e.g. 123"),
+          #textInput(inputId = "password", 
+          #          label = "Please enter a password", 
+          #          value = "", 
+          #          placeholder = "e.g. 123"),
           # This displays the action putton Next.
           actionButton(inputId = "gt_instructions", 
                        label = "Continue") 
@@ -711,7 +711,7 @@ observeEvent(input$gt_goodbye, {(
       
       GameDatafilePath <- file.path(tempdir(), GameDatafileName)
       write.csv(GameData.i, GameDatafilePath, row.names = FALSE, quote = TRUE)
-      rdrop2::drop_upload(GameDatafilePath, path = outputDir, dtoken = droptoken)
+      #rdrop2::drop_upload(GameDatafilePath, path = outputDir, dtoken = droptoken)
       
       #SurveyDatafilePath <- file.path(tempdir(), SurveyDatafileName)
       #write.csv(SurveyData.i, SurveyDatafilePath, row.names = FALSE, quote = TRUE)
